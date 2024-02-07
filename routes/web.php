@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $tasks = [
+        'Aller faire les courses',
+        'Aller à la gym',
+        'Dormir'
+    ];
+    return view('home',[
+        'tasks' => $tasks
+    ]);
 });
