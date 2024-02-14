@@ -17,7 +17,9 @@ Route::get('/', function () {
     $tasks = [
         'Aller faire les courses',
         'Aller à la gym',
-        'Dormir'
+        'Dormir',
+        'Manger',
+        'Coder'
     ];
     return view('home',[
         'tasks' => $tasks

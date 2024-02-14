@@ -7,7 +7,7 @@
 
 <ul>
     @foreach ($tasks as $task )
-        <li>{{ $task }}</li>
+        <li>{{ $task }} test</li>
     @endforeach
 </ul>
 
