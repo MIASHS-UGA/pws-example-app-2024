@@ -13,15 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $tasks = [
-        'Aller faire les courses',
-        'Aller à la gym',
-        'Dormir',
-        'Manger',
-        'Coder'
-    ];
-    return view('home',[
-        'tasks' => $tasks
-    ]);
-});
+use App\Http\Controllers\PagesController;
+
+Route::get('/', [PagesController::class, 'home']);
+Route::get('/about', [PagesController::class, 'about']);
+Route::get('/contact', [PagesController::class, 'contact']);
+
+use App\Http\Controllers\ProjectController;
+Route::get('/project', [ProjectController::class, 'index']);
