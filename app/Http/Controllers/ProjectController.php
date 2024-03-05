@@ -34,7 +34,17 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         //
-        Project::create(request(['title', 'description']));
+        $project = new Project(); //on instancie un nouveau projet
+        $request->validate([
+            'title' => 'required|min:4|max:255',
+            'description' => 'required',
+        ]);
+        $project->title = request('title'); //on set le titre avec la donnée envoyée du formulaire
+        $project->description = request('description');
+        $project->user_id = 1;
+
+        $project->save(); // on enregistre dans la base
+       // Project::create(request(['title', 'description']));
 
         return redirect('/project'); // méthode pour rediriger vers une autre url (en get par défaut)
 
