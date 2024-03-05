@@ -9,7 +9,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
         <!-- Styles -->
         <style>
             body {
@@ -42,6 +42,7 @@
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="/project">Projects</a></li>
+                <li><a href="/login">Login</a></li>
             </ul>
         </div>
         <h1>

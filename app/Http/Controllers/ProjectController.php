@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use Illuminate\Support\Facades\Mail;
 
 class ProjectController extends Controller
 {
@@ -34,17 +35,16 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         //
-        $project = new Project(); //on instancie un nouveau projet
         $request->validate([
             'title' => 'required|min:4|max:255',
             'description' => 'required',
         ]);
-        $project->title = request('title'); //on set le titre avec la donnée envoyée du formulaire
-        $project->description = request('description');
-        $project->user_id = 1;
+        Project::create(request(['title', 'description']));
 
-        $project->save(); // on enregistre dans la base
-       // Project::create(request(['title', 'description']));
+        Mail::raw('Projet '.request('title').': '.request('description'), function ($message) {
+            $message->to('admin@monsite.com')
+                ->subject('Projet créé: '. request('title') );
+        });
 
         return redirect('/project'); // méthode pour rediriger vers une autre url (en get par défaut)
 

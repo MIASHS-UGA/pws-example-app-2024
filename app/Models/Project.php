@@ -16,4 +16,10 @@ class Project extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function save(array $options = array())
+    {
+        $this->user_id = auth()->id();
+        parent::save($options);
+    }
 }
